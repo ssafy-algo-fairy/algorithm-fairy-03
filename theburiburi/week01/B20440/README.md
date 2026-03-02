@@ -11,8 +11,36 @@
 ---
 
 ## 💡 핵심 알고리즘 : 스위핑 (Sweep Line) / 정렬
+핵심코드
+```
+    static void solve(){
+        int maxCount = 0;
+        int curCount = 0;
+        boolean isMax = false;
+        int maxStartTime = 0;
+        int maxEndTime = 0;
+        for(int i=0; i<2*N; i++){
+            if(arr[i].isStart) curCount++;
+            else curCount--;
 
-```text
+            if(i+1 < 2*N && arr[i].time == arr[i+1].time) continue;
+            
+            if(curCount > maxCount){
+                maxCount = curCount;
+                isMax = true;
+                maxStartTime = arr[i].time;
+            }
+            else if(curCount < maxCount && isMax){
+                maxEndTime = arr[i].time;
+                isMax = false;
+            }
+        }
+        sb.append(maxCount).append("\n");
+        sb.append(maxStartTime).append(" ").append(maxEndTime);
+    }
+```
+
+text
 누적합 배열의 한계 극복 = 21억 크기의 배열 대신, 2*N개의 이벤트 정렬로 해결
   └─ 모든 이벤트를 시간(time) 기준 오름차순으로 정렬
       └─ 순차적으로 이벤트를 탐색하며 curCount에 +1(입장) 또는 -1(퇴장) 반영
