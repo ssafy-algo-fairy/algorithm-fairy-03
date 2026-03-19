@@ -31,16 +31,16 @@ public class boj17954 {
 			System.out.println("2");
 		} else {
 			queue1.addFirst(2 * N);
-			sb1.append(2 * N .append(" ");
+			sb1.append(2 * N).append(" ");
 			for (int i = 1; i <= N - 2; i++) {
 				queue1.addLast(i);
-				sb1.append(i.append(" ");
+				sb1.append(i).append(" ");
 			}
 			queue1.addLast(2 * N - 1);
 			sb1.append((2 * N - 1).append(" ");
 
 			queue2.addFirst(2 * N - 2);
-			sb2.append(2 * N - 2.append(" ");
+			sb2.append(2 * N - 2).append(" ");
 			for (int i = 1; i <= N - 2; i++) {
 				int n = N - 2 + i;
 				if (n < 0)
